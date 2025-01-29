@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Associate Show Seats</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Associate Show Seats</h1>
+        <form id="associateSeatsForm">
+            <div class="mb-3">
+                <label for="showId" class="form-label">Show ID</label>
+                <input type="number" class="form-control" id="showId" required>
+            </div>
+            <div class="mb-3">
+                <label for="classicPrice" class="form-label">Price for Classic Seats</label>
+                <input type="number" class="form-control" id="classicPrice" required>
+            </div>
+            <div class="mb-3">
+                <label for="premiumPrice" class="form-label">Price for Premium Seats</label>
+                <input type="number" class="form-control" id="premiumPrice" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
