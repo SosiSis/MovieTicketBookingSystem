@@ -28,7 +28,11 @@ public class UserService {
 			throw new UserExist();
 		}
 
-		User user = UserConvertor.userDtoToUser(userRequest,  passwordEncoder.encode("1234"));
+		User user = UserConvertor.userDtoToUser(userRequest, passwordEncoder.encode(userRequest.getPassword())); // Use userRequest's password
+		
+
+		
+
 
 		userRepository.save(user);
 		return "User Saved Successfully";

@@ -3,6 +3,7 @@ package com.itsc.movie.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -30,6 +31,7 @@ public class UserController {
 	private JWTService jwtService;
 
 	@PostMapping("/addNew")
+	@PreAuthorize("permitAll()")
 	public ResponseEntity<String> addNewUser(@RequestBody UserRequest userEntryDto) {
 		try {
 			String result = userService.addUser(userEntryDto);
@@ -40,9 +42,12 @@ public class UserController {
 	}
 
 	@PostMapping("/getToken")
+	
 	public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+				
+				
 
 		if (authentication.isAuthenticated()) {
 			return jwtService.generateToken(authRequest.getUsername());
