@@ -5,17 +5,27 @@
 The **Movie Ticket Booking System** is a web application developed using the **Spring Framework**. It allows users to browse movies, check showtimes, book tickets, and manage reservations effortlessly. The system also includes an **admin panel** for managing movie schedules and bookings.
 
 ## Features
-- ✅ User authentication (registration & login)
-- 🎥 Movie listings with showtime details
-- 🎫 Live seat availability and booking
-- 🛠️ Admin dashboard for managing movies, schedules, and bookings
-- 🎭 Theater management system
+✅ User authentication (registration & login)  
+🎥 Movie listings with showtime details  
+🎫 Live seat availability and booking  
+🛠️ Admin dashboard for managing movies, schedules, and bookings  
+🎭 Theater management system  
+
+## Frontend Preview
+Here is a preview of the frontend interface:
+
+![Frontend Screenshot](assets/frontend-screenshot/admin-dashboard.png)
+![Frontend Screenshot](assets/frontend-screenshot/user-dashboard.png)
+![Frontend Screenshot](assets/frontend-screenshot/booking.png)
+![Frontend Screenshot](assets/frontend-screenshot/responsive-ui.png)
+
+
 
 ## Technologies Used
-- **Backend:** Spring Boot 🏗️
-- **Database:** MySQL (using Spring Data JPA) 🗄️
-- **Frontend:** HTML, CSS, JavaScript 🎨
-- **Build Tool:** Maven ⚙️
+Backend: Spring Boot 🏗️  
+Database: MySQL (using Spring Data JPA) 🗄️  
+Frontend: HTML, CSS, JavaScript 🎨  
+Build Tool: Maven 
 
 ## Installation & Setup
 
@@ -48,4 +58,3 @@ The **Movie Ticket Booking System** is a web application developed using the **S
 - **Sosina Sisay** (UGR/0131/14)
 - **Roman Kebede** (UGR/0448/14)
 - **Loti Yadeta** (UGR/2782/14)
-
