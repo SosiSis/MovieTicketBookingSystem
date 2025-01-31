@@ -1,5 +1,7 @@
 package com.itsc.movie.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +14,6 @@ import com.itsc.movie.exceptions.TheaterIsNotExist;
 import com.itsc.movie.repositories.TheaterRepository;
 import com.itsc.movie.request.TheaterRequest;
 import com.itsc.movie.request.TheaterSeatRequest;
-
-import java.util.List;
 
 @Service
 public class TheaterService {
