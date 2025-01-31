@@ -23,8 +23,6 @@ User dashoard
 Bookings
 ![Frontend Screenshot](movieticketbookingsystem/src/main/webapp/assets/frontend-screenshot/booking.png)
 
-Responsive UI
-![Frontend Screenshot](movieticketbookingsystem/src/main/webapp/assets/frontend-screenshot/responsive-ui.png)
 
 
 
