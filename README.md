@@ -14,9 +14,16 @@ The **Movie Ticket Booking System** is a web application developed using the **S
 ## Frontend Preview
 Here is a preview of the frontend interface:
 
+ Admin dashboard
 ![Frontend Screenshot](movieticketbookingsystem/src/main/webapp/assets/frontend-screenshot/admin-dashboard.png)
+
+User dashoard
 ![Frontend Screenshot](movieticketbookingsystem/src/main/webapp/assets/frontend-screenshot/user-dashboard.png)
+
+Bookings
 ![Frontend Screenshot](movieticketbookingsystem/src/main/webapp/assets/frontend-screenshot/booking.png)
+
+Responsive UI
 ![Frontend Screenshot](movieticketbookingsystem/src/main/webapp/assets/frontend-screenshot/responsive-ui.png)
 
 
