@@ -14,12 +14,12 @@
         <h1>Add Show</h1>
         <form id="addShowForm">
             <div class="mb-3">
-                <label for="movieId" class="form-label">Movie ID</label>
-                <input type="number" class="form-control" id="movieId" required>
+                <label for="movieId" class="form-label">Movie Id</label>
+                <input type="Number" class="form-control" id="movieId" required>
             </div>
             <div class="mb-3">
-                <label for="theaterId" class="form-label">Theater ID</label>
-                <input type="number" class="form-control" id="theaterId" required>
+                <label for="theaterId" class="form-label">Theater Id</label>
+                <input type="Number" class="form-control" id="theaterId" required>
             </div>
             <div class="mb-3">
                 <label for="showTime" class="form-label">Show Time</label>
@@ -32,7 +32,106 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-    <script src="script.js"></script>
+
+    <div class="container mt-5">
+        <h1>Associate Show Seats</h1>
+        <form id="associateSeatsForm">
+            <div class="mb-3">
+                <label for="showId" class="form-label">Show ID</label>
+                <input type="number" class="form-control" id="showId" required>
+            </div>
+            <div class="mb-3">
+                <label for="classicPrice" class="form-label">Price for Classic Seats</label>
+                <input type="number" class="form-control" id="classicPrice" required>
+            </div>
+            <div class="mb-3">
+                <label for="premiumPrice" class="form-label">Price for Premium Seats</label>
+                <input type="number" class="form-control" id="premiumPrice" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script >
+        // Add Show
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("addShowForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const movieId = document.getElementById("movieId").value; 
+    const theaterId = document.getElementById("theaterId").value; 
+    const showTime = document.getElementById("showTime").value;
+    const showDate = document.getElementById("showDate").value;
+
+    try {
+      const showRequestBody = {
+        movieId,
+        theaterId,
+        showTime,
+        showDate
+      };
+
+      const response = await fetch("http://localhost:8099/show/addNew", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + localStorage.getItem("authToken")
+        },
+        body: JSON.stringify(showRequestBody)
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add show: " + response.statusText);
+      }
+
+      const showData = await response.json();
+      console.log("Show added successfully:", showData);
+      alert("Show added successfully!");
+      window.location.href = "show_dashboard.html"; 
+
+    } catch (error) {
+      console.error("Error during show creation:", error);
+      alert("Failed to add show. Please try again.");
+    }
+  });
+});
+
+// Associate Seats with Show
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("associateSeatsForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const showId = document.getElementById("showId").value;
+    const priceOfClassicSeat = document.getElementById("classicPrice").value;
+    const priceOfPremiumSeat = document.getElementById("premiumPrice").value;
+
+    try {
+      const requestBody = {
+        showId:parseInt(showId, 10),
+        priceOfPremiumSeat:parseInt(priceOfPremiumSeat, 10),
+        priceOfClassicSeat:parseInt( priceOfClassicSeat, 10)
+      };
+
+      const response = await fetch("http://localhost:8099/show/associateSeats", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + localStorage.getItem("authToken")
+        },
+        body: JSON.stringify(requestBody)
+      });
+
+      
+
+      const responseData = await response.json();
+      console.log("Seats associated successfully:", responseData);
+      alert("Seats associated successfully!");
+
+    } catch (error) {
+      
+    }
+  });
+});
+    </script>
 </body>
 
 </html>

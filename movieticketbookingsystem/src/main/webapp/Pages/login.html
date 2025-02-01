@@ -24,7 +24,68 @@
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
-    <script src="script.js"></script>
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("loginForm").addEventListener("submit", async function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Get form values
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        console.log("Logging in with", { username, password });
+
+        // Prepare request body
+        const requestBody = {
+            username,
+            password
+        };
+
+        try {
+            console.log("Sending login data to server...");
+
+            const response = await fetch("http://localhost:8099/user/getToken", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                throw new Error("Login failed: " + response.statusText);
+            }
+
+            // Get token, role, and userId from response
+            const responseData = await response.json();
+            console.log("Login successful. Token:", responseData.token);
+            console.log("User role:", responseData.role);
+            console.log("User ID:", responseData.userId);
+
+            // Store token, role, and userId in localStorage
+            localStorage.setItem("authToken", responseData.token);
+            localStorage.setItem("userRole", responseData.role);
+            localStorage.setItem("userId", responseData.userId); // Store userId
+
+            alert("Login successful!");
+
+            // Redirect based on role
+            if (responseData.role === "ROLE_ADMIN") {
+                window.location.href = "admin_dashboard.html"; // Redirect to admin page
+            } else {
+                window.location.href = "user_dashboard.html"; // Redirect to user page
+            }
+
+        } catch (error) {
+            console.error("Error during login:", error);
+            alert("Login failed. Please check your credentials.");
+        }
+    });
+});
+
+
+    </script>
 </body>
 
 </html>

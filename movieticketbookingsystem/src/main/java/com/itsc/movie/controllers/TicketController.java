@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.itsc.movie.request.TicketRequest;
 import com.itsc.movie.response.TicketResponse;
 import com.itsc.movie.services.TicketService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
 @RequestMapping("/ticket")
 public class TicketController {

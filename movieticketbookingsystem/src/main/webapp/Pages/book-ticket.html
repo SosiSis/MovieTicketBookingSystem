@@ -17,10 +17,7 @@
                 <label for="showId" class="form-label">Show ID</label>
                 <input type="number" class="form-control" id="showId" required>
             </div>
-            <div class="mb-3">
-                <label for="userId" class="form-label">User ID</label>
-                <input type="number" class="form-control" id="userId" required>
-            </div>
+           
             <div class="mb-3">
                 <label for="seats" class="form-label">Seat Numbers (comma-separated)</label>
                 <input type="text" class="form-control" id="seats" required placeholder="e.g., 1A,2B,3C">
@@ -28,7 +25,52 @@
             <button type="submit" class="btn btn-primary">Book Ticket</button>
         </form>
     </div>
-    <script src="script.js"></script>
+    <script >
+        // Book Ticket
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("bookTicketForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const showId = document.getElementById("showId").value;
+    const requestSeats = document.getElementById("seats").value.split(",").map(seat => seat.trim());
+    const userId = localStorage.getItem("userId");
+
+    if (!userId) {
+      alert("User ID not found in localStorage. Please log in again.");
+      return;
+    }
+
+    try {
+      const requestBody = {
+        showId: parseInt(showId, 10),
+        userId: parseInt(userId, 10),
+        requestSeats
+      };
+
+      const response = await fetch("http://localhost:8099/ticket/book", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + localStorage.getItem("authToken")
+        },
+        body: JSON.stringify(requestBody)
+      });
+
+      if (!response.ok) {
+        throw new Error("Booking failed: " + response.statusText);
+      }
+
+      const responseData = await response.json();
+      console.log("Tickets booked successfully:", responseData);
+      alert("Tickets booked successfully!");
+
+    } catch (error) {
+      console.error("Error during ticket booking:", error);
+      alert("Booking failed. Please try again.");
+    }
+  });
+});
+    </script>
 </body>
 
 </html>

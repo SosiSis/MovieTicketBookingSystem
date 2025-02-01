@@ -61,7 +61,51 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-    <script src="script.js"></script>
+    <script >
+
+        // Add Movie
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("addMovieForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const movieName = document.getElementById("movieName").value;
+    const duration = document.getElementById("duration").value;
+    const rating = document.getElementById("rating").value;
+    const releaseDate = document.getElementById("releaseDate").value;
+    const genre = document.getElementById("genre").value;
+    const language = document.getElementById("language").value;
+
+    try {
+      const requestBody = {
+        movieName,
+        duration,
+        rating,
+        releaseDate,
+        genre,
+        language
+      };
+
+      const response = await fetch("http://localhost:8099/movie/addNew", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + localStorage.getItem("authToken")
+        },
+        body: JSON.stringify(requestBody)
+      });
+
+     
+      const responseData = await response.json();
+      console.log("Movie added successfully:", responseData);
+      alert("Movie added successfully!");
+      window.location.href = "movie_dashboard.html"; 
+
+    } catch (error) {
+      
+    }
+  });
+});
+    </script>
 </body>
 
 </html>

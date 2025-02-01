@@ -15,12 +15,14 @@ com\itsc\movie\exceptions\UserDoesNotExists.class
 com\itsc\movie\request\TheaterRequest.class
 com\itsc\movie\services\MovieService.class
 com\itsc\movie\entities\User$UserBuilder.class
+com\itsc\movie\response\TokenResponse.class
 com\itsc\movie\config\JWTService.class
 com\itsc\movie\entities\TheaterSeat.class
 com\itsc\movie\entities\Ticket.class
 com\itsc\movie\request\TheaterSeatRequest.class
 com\itsc\movie\entities\User.class
 com\itsc\movie\entities\Show.class
+com\itsc\movie\config\CorsConfig.class
 com\itsc\movie\controllers\UserController.class
 com\itsc\movie\exceptions\UserExist.class
 com\itsc\movie\repositories\TicketRepository.class
@@ -38,6 +40,7 @@ com\itsc\movie\convertor\ShowConvertor.class
 com\itsc\movie\request\UserRequest.class
 com\itsc\movie\response\UserResponse.class
 com\itsc\movie\request\ShowTimingsRequest.class
+com\itsc\movie\config\CorsConfig$1.class
 com\itsc\movie\services\TicketService.class
 com\itsc\movie\repositories\UserRepository.class
 com\itsc\movie\controllers\TicketController.class
@@ -61,5 +64,6 @@ com\itsc\movie\entities\TheaterSeat$TheaterSeatBuilder.class
 com\itsc\movie\entities\Theater.class
 com\itsc\movie\exceptions\MovieDoesNotExists.class
 com\itsc\movie\entities\ShowSeat.class
+com\itsc\movie\config\WebConfig.class
 com\itsc\movie\controllers\ShowController.class
 com\itsc\movie\entities\Show$ShowBuilder.class

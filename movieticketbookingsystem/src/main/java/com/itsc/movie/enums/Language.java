@@ -1,6 +1,7 @@
 package com.itsc.movie.enums;
 
 public enum Language {
+  
     ENGLISH,
     SPANISH,
     FRENCH,
@@ -8,5 +9,7 @@ public enum Language {
     KOREAN,
     GERMAN,
     RUSSIAN,
-    ARABIC,
+    ARABIC
 }
+
+

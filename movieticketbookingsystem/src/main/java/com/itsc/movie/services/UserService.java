@@ -38,4 +38,11 @@ public class UserService {
 		return "User Saved Successfully";
 	}
 
+	// Method to get userId by username
+    public Integer getUserIdByUsername(String username) {
+        return userRepository.findByEmailId(username)
+                             .map(user -> user.getId())
+                             .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
 }

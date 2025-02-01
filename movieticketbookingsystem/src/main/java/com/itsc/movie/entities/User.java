@@ -40,8 +40,16 @@ public class User {
     
     private String password;
 
-	private String roles;
+    private String roles;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Ticket> ticketList = new ArrayList<>();
+
+    // Set default role to "ROLE_USER" if none is provided
+    @PrePersist
+    public void setDefaultRole() {
+        if (this.roles == null || this.roles.isEmpty()) {
+            this.roles = "ROLE_USER";  // Default role
+        }
+    }
 }

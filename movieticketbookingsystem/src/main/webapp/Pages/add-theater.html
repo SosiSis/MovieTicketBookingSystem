@@ -45,6 +45,77 @@
             <button type="submit" class="btn btn-primary">Add Seats</button>
         </form>
     </div>
-    <script src="script.js"></script> </body>
+    <script >
+        // Add Theater and Theater Seats
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("addTheaterForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const theaterName = document.getElementById("theaterName").value;
+    const address = document.getElementById("address").value;
+
+    try {
+      const theaterRequestBody = {
+        name: theaterName,
+        address: address
+      };
+
+      const response = await fetch("http://localhost:8099/theater/addNew", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + localStorage.getItem("authToken")
+        },
+        body: JSON.stringify(theaterRequestBody)
+      });
+
+     
+      const theaterData = await response.json();
+      console.log("Theater added successfully:", theaterData);
+      alert("Theater added successfully!");
+
+    } catch (error) {
+     
+    }
+  });
+
+  document.getElementById("addTheaterSeatForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const address = document.getElementById("addressSeats").value;
+    const noOfSeatInRow = document.getElementById("seatsInRow").value;
+    const noOfPremiumSeat = document.getElementById("premiumSeats").value;
+    const noOfClassicSeat = document.getElementById("classicSeats").value;
+
+    try {
+      const seatsRequestBody = {
+        address,
+        noOfSeatInRow,
+        noOfPremiumSeat,
+        noOfClassicSeat
+      };
+
+      const seatsResponse = await fetch("http://localhost:8099/theater/addTheaterSeat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + localStorage.getItem("authToken")
+        },
+        body: JSON.stringify(seatsRequestBody)
+      });
+
+     
+
+      const seatsData = await seatsResponse.json();
+      console.log("Seats added successfully:", seatsData);
+      alert("Seats added successfully!");
+
+    } catch (error) {
+     
+    }
+  });
+});
+    </script> </body>
 
 </html>

@@ -14,7 +14,9 @@ import com.itsc.movie.entities.Movie;
 import com.itsc.movie.repositories.MovieRepository;
 import com.itsc.movie.request.MovieRequest;
 import com.itsc.movie.services.MovieService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
 @RequestMapping("/movie")
 public class MovieController {
